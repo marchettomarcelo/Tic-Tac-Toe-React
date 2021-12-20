@@ -16,10 +16,10 @@ function Table() {
 
   const [jogador1, setJogador1] = useState(true);
 
-  const calcWinner = () => {
-    const compare = [jogo[0], jogo[1], jogo[2]];
-    console.log(compare);
-  };
+  // const calcWinner = () => {
+  //   const compare = [jogo[0], jogo[1], jogo[2]];
+  //   console.log(compare);
+  // };
 
   const handleClk = (data) => {
     var newJogo = [...jogo];
