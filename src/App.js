@@ -1,75 +1,47 @@
 import { useState } from "react";
 import "./App.css";
 
-function Jogadas(props) {
-  const [inp, setInp] = useState({ texto: "", casa: 3 });
+//--------------------------------------------------------------------------------------------------
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inp);
-
-    const possiveis = ["x", "y"];
-
-    if (inp.casa > 8 || inp.casa < 0) {
-      return console.log("coloque valido input. Numeros apenas entre 8 e 0");
-    }
-    if (!possiveis.includes(inp.texto)) {
-      return console.log("coloque valido input");
-    }
-
-    props.func(inp);
-  };
-
-  const Change = (e) => {
-    setInp({ ...inp, [e.target.name]: e.target.value });
-  };
-
+function Quad(props) {
   return (
-    <div id="formDiv">
-      <form onSubmit={handleSubmit}>
-        <label>Jogador: "X" ou "Y"</label>
-        <input type="text" name="texto" value={inp.texto} onChange={Change} />
-
-        <label>Casa: 0-8</label>
-        <input type="number" name="casa" value={inp.casa} onChange={Change} />
-        <button className="button-79">ok</button>
-      </form>
+    <div className="quad" onClick={props.clk} id={props.id}>
+      {props.texto}
     </div>
   );
 }
-//--------------------------------------------------------------------------------------------------
 
 function Table() {
   const [jogo, setJogo] = useState(["", "", "", "", "", "", "", "", ""]);
 
-  const pullData = (data) => {
+  const [jogador1, setJogador1] = useState(true);
+
+  const calcWinner = () => {
+    const compare = [jogo[0], jogo[1], jogo[2]];
+    console.log(compare);
+  };
+
+  const handleClk = (data) => {
     var newJogo = [...jogo];
-    newJogo[data.casa] = data.texto;
+    newJogo[data.target.id] = jogador1 ? "X" : "O";
+
     setJogo(newJogo);
+    setJogador1(!jogador1);
   };
 
   return (
     <>
-      <Jogadas func={pullData} />
-      <table>
-        <tbody>
-          <tr>
-            <td>{jogo[0]}</td>
-            <td>{jogo[1]}</td>
-            <td>{jogo[2]}</td>
-          </tr>
-          <tr>
-            <td>{jogo[3]}</td>
-            <td>{jogo[4]}</td>
-            <td>{jogo[5]}</td>
-          </tr>
-          <tr>
-            <td>{jogo[6]}</td>
-            <td>{jogo[7]}</td>
-            <td>{jogo[8]}</td>
-          </tr>
-        </tbody>
-      </table>
+      <h1>Jogador atual: {jogador1 ? "X" : "O"}</h1>
+
+      <button onClick={() => setJogo(["", "", "", "", "", "", "", "", ""])}>
+        Limpar
+      </button>
+
+      <div className="board">
+        {jogo.map((casa, id) => {
+          return <Quad texto={casa} id={id} key={id} clk={handleClk} />;
+        })}
+      </div>
     </>
   );
 }
