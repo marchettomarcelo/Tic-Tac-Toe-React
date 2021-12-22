@@ -23,7 +23,7 @@ function Table() {
 
   const handleClk = (data) => {
     var newJogo = [...jogo];
-    newJogo[data.target.id] = jogador1 ? "X" : "O";
+    newJogo[data.target.id] = jogador1 ? "T" : "M";
 
     setJogo(newJogo);
     setJogador1(!jogador1);
@@ -31,11 +31,17 @@ function Table() {
 
   return (
     <>
-      <h1>Jogador atual: {jogador1 ? "X" : "O"}</h1>
+      <h1>Jogador atual: {jogador1 ? "Thomas" : "Marcelo"}</h1>
 
-      <button onClick={() => setJogo(["", "", "", "", "", "", "", "", ""])}>
-        Limpar
-      </button>
+      <div className="head">
+        <h2>
+          Jogo da velha do <br /> Marcelo e do Thomas
+        </h2>
+
+        <button onClick={() => setJogo(["", "", "", "", "", "", "", "", ""])}>
+          Limpar
+        </button>
+      </div>
 
       <div className="board">
         {jogo.map((casa, id) => {

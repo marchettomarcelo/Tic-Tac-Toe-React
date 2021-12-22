@@ -1,5 +1,7 @@
 body {
   background-color: #f6f4f3;
+  overflow: hidden;
+  margin: 0px;
 }
 
 main {
@@ -12,14 +14,25 @@ main {
   height: 100vh;
 }
 
+h2 {
+  margin-right: 20px;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 20vh);
   grid-template-rows: repeat(3, 20vh);
   gap: 5px;
   margin: 10px;
-  width: calc(60vh + 10px);
-  border: solid #183059 5px;
+  /* width: calc(60vh + 10px);
+  border: solid #183059 5px; */
 }
 
 .quad {
@@ -28,6 +41,7 @@ main {
   justify-content: center;
   align-items: center;
   background-color: #276fbf;
+  border: #013665 10px solid;
   font-weight: 700;
   font-size: 5rem;
   display: flex;
@@ -42,11 +56,13 @@ button {
   font-weight: 700;
   font-family: "Garamond";
   margin-bottom: 15px;
-  border: 3px solid black;
+  border: 5px solid black;
+  font-weight: 800;
   border-radius: 5px;
   padding: 5px;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   background-color: #f03a47;
+  height: 10vh;
   width: 25vh;
 }
 
