@@ -1,7 +1,18 @@
 body {
-  background-color: #f6f4f3;
+  /* background-color: #8cba80; */
+  background-image: linear-gradient(45deg, #525f45, #f6f5ae, #3a86ff);
+  animation: bg-anim 5s infinite alternate;
   overflow: hidden;
   margin: 0px;
+}
+
+@keyframes bg-anim {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
 }
 
 main {
@@ -14,11 +25,8 @@ main {
   height: 100vh;
 }
 
-h2 {
-  margin-right: 20px;
-}
-
 .head {
+  margin: 25px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,7 +38,8 @@ h2 {
   grid-template-columns: repeat(3, 20vh);
   grid-template-rows: repeat(3, 20vh);
   gap: 5px;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   /* width: calc(60vh + 10px);
   border: solid #183059 5px; */
 }
@@ -40,15 +49,15 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #276fbf;
-  border: #013665 10px solid;
+  background-color: #274690;
+  border: black 7px solid;
   font-weight: 700;
   font-size: 5rem;
   display: flex;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 15px;
 }
 
@@ -61,20 +70,26 @@ button {
   border-radius: 5px;
   padding: 5px;
   font-size: 1.8rem;
-  background-color: #f03a47;
+  background-color: #658e9c;
   height: 10vh;
   width: 25vh;
 }
 
 @media only screen and (max-width: 700px) {
   h1 {
-    font-size: 2rem;
+    margin: 0px;
+
+    margin-left: 20px;
+    font-size: 3rem;
   }
 
   .board {
-    grid-template-columns: repeat(3, 20vw);
-    grid-template-rows: repeat(3, 20vw);
-    width: calc(60vw + 10px);
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(3, 25vw);
+    width: calc(75vw + 10px);
+  }
+  .quad {
+    font-size: 4rem;
   }
 
   button {
